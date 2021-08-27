@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Michael Hanke & Alex Waite" />
 
@@ -55,9 +54,28 @@
   have reached significant adoption. This page offers a compact overview of such
   projects — all of which are Free and Open Source.</p>
 
+  <section id="datalad" class="alternate">
+    <div class="youtube youtube-project-logo" id="IN0vowZ67vs" data-thumbnail="/img/logo/datalad.png" data-params="modestbranding=1&amp;showinfo=0&amp;controls=1&amp;vq=hd720" style="width:768px; height: 250px;">
+    </div>
+
+    <p>DataLad is a distributed system for joint management of code, data, and
+    their relationship. It aims to make data management as easy as managing
+    code, streamlining data consumption, update, and publication. It aids
+    handling data of any size or type, and can link them with precisely
+    versioned, lightweight dependencies. DataLad helps to make science more
+    FAIR, by capturing complete and actionable process provenance of any data
+    transformation to enable automatic re-computation. Click the logo for a short
+    video introduction.</p>
+
+    <ul class="social-links">
+      <li><a class="icon-home" aria-label="Website" href="http://datalad.org"></a></li>
+      <li><a class="icon-twitter" aria-label="Twitter" href="https://twitter.com/datalad"></a></li>
+      <li><a class="icon-github" aria-label="GitHub" href="https://github.com/datalad"></a></li>
+    </ul>
+  </section>
   <section id="neurodebian" class="alternate">
     <a class="project-logo" href="http://neuro.debian.net">
-      <img alt="NeuroDebian Logo" src="/img/logo/neurodebian.png" />
+      <img alt="NeuroDebian Logo" src="/img/logo/neurodebian.svg" />
     </a>
 
     <p>NeuroDebian is a complete software platform for neuroscientific research
@@ -83,7 +101,7 @@
   </section>
   <section id="pymvpa" class="alternate">
     <a class="project-logo" href="http://www.pymvpa.org">
-      <img alt="PyMVPA Logo" src="/img/logo/pymvpa.png" />
+      <img alt="PyMVPA Logo" src="/img/logo/pymvpa.svg" />
     </a>
 
     <p>PyMVPA is a toolbox for multivariate pattern analysis of neuroscientific data.
@@ -105,28 +123,9 @@
       <li><a class="icon-github" aria-label="GitHub" href="https://github.com/PyMVPA/PyMVPA"></a></li>
     </ul>
   </section>
-  <section id="datalad" class="alternate">
-    <a class="project-logo" href="http://datalad.org">
-      <img alt="DataLad Logo" src="/img/logo/datalad.png" />
-    </a>
-
-    <p>DataLad aims to provide access to scientific data available from various
-    sources (e.g. lab or consortium websites such as Human Connectome; data
-    sharing portals such as OpenfMRI and CRCNS) through a single convenient
-    interface and integrated with your software package managers (such as APT in
-    Debian). Although initially targeting neuroimaging and neuroscience data in
-    general, it is designed for broader use and we welcome a wide range of
-    contributions from other domains.</p>
-
-    <ul class="social-links">
-      <li><a class="icon-home" aria-label="Website" href="http://datalad.org"></a></li>
-      <li><a class="icon-twitter" aria-label="Twitter" href="https://twitter.com/datalad"></a></li>
-      <li><a class="icon-github" aria-label="GitHub" href="https://github.com/datalad"></a></li>
-    </ul>
-  </section>
   <section id="nibabel" class="alternate">
     <a class="project-logo" href="http://nipy.org/nibabel/">
-      <img alt="NiBabel Logo" src="/img/logo/nibabel.png" />
+      <img alt="NiBabel Logo" src="/img/logo/nibabel.svg" />
     </a>
 
     <p>PyNIfTI was one of the first packages to access data in the NIfTI format
@@ -140,6 +139,62 @@
       <li><a class="icon-github" aria-label="GitHub" href="https://github.com/nipy/nibabel"></a></li>
     </ul>
   </section>
+
+<script id="youtubeplayer">
+"use strict";
+function r(f) {/in/.test(document.readyState) ? setTimeout('r(' + f + ')', 9) : f();}
+r(function () {
+  if (!document.getElementsByClassName) {
+    // IE8 support
+    var getElementsByClassName = function (node, classname) {
+      var a = [];
+      var re = new RegExp('(^| )' + classname + '( |$)');
+      var els = node.getElementsByTagName("*");
+      for (var i = 0, j = els.length; i < j; i++) {
+        if (re.test(els[i].className)) a.push(els[i]);}
+      return a;
+    };
+    var videos = getElementsByClassName(document.body, "youtube");
+  } else
+  {
+    var videos = document.getElementsByClassName("youtube");
+  }
+
+  var nb_videos = videos.length;
+  for (var i = 0; i < nb_videos; i++) {
+    vid = videos[i]
+    if (vid.getAttribute("data-thumbnail")) {
+      vid.style.backgroundImage = 'url(' + vid.getAttribute("data-thumbnail") + ')';
+    } else {
+      // Based on the YouTube ID, we can easily find the thumbnail image
+      vid.style.backgroundImage = 'url(http://i.ytimg.com/vi/' + vid.id + '/sddefault.jpg)';
+    }
+
+    // Overlay the Play icon to make it look like a video player
+    var play = document.createElement("div");
+    play.setAttribute("class", "play");
+    vid.appendChild(play);
+
+    vid.onclick = function () {
+      // Create an iFrame with autoplay set to true
+      var iframe = document.createElement("iframe");
+      var iframe_url = "https://www.youtube.com/embed/" + this.id + "?autoplay=1&autohide=1";
+      if (this.getAttribute("data-params")) iframe_url += '&' + this.getAttribute("data-params");
+      iframe.setAttribute("src", iframe_url);
+      iframe.setAttribute("frameborder", '0');
+      iframe.setAttribute("class", 'youtube-iframe');
+
+      // The height and width of the iFrame should be the same as parent
+      iframe.style.width = this.style.width;
+      iframe.style.height = this.style.height;
+
+      // Replace the YouTube thumbnail with YouTube Player
+      this.parentNode.replaceChild(iframe, this);
+    };
+  }
+});
+</script>
+
 
   </div>
 </article>
